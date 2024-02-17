@@ -1,9 +1,12 @@
-using Server.Presentation.Grpc.Services;
+using MadWorldNL.Common.AspNetCore;
+using MadWorldNL.Server.Presentation.Grpc.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+
+builder.AddCommonMadWorldNL();
 
 var app = builder.Build();
 

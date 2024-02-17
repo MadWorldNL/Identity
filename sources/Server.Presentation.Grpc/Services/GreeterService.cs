@@ -1,7 +1,7 @@
 using Grpc.Core;
 using Server.Presentation.Grpc;
 
-namespace Server.Presentation.Grpc.Services;
+namespace MadWorldNL.Server.Presentation.Grpc.Services;
 
 public class GreeterService : Greeter.GreeterBase
 {
