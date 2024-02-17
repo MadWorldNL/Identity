@@ -1,8 +1,35 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "automated-tests", "automated-tests", "{F2099AE4-C667-4EE5-A5EB-A81EF125CAF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment-units", "deployment-units", "{4FEA52A1-D597-4D02-A23B-15E6E41589DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{32514DC3-93DB-40F0-81CA-7525115445CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{FD69CCDE-B746-4AAF-B04C-9628249B7AD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{F42F7991-2F91-47C9-8ED0-58B1C8F014AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{0336D5D8-8B04-4701-804F-158356ED9475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Presentation.Grpc", "Server.Presentation.Grpc\Server.Presentation.Grpc.csproj", "{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32514DC3-93DB-40F0-81CA-7525115445CA} = {4FEA52A1-D597-4D02-A23B-15E6E41589DF}
+		{FD69CCDE-B746-4AAF-B04C-9628249B7AD1} = {4FEA52A1-D597-4D02-A23B-15E6E41589DF}
+		{F42F7991-2F91-47C9-8ED0-58B1C8F014AC} = {F2099AE4-C667-4EE5-A5EB-A81EF125CAF7}
+		{0336D5D8-8B04-4701-804F-158356ED9475} = {F2099AE4-C667-4EE5-A5EB-A81EF125CAF7}
+		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2} = {32514DC3-93DB-40F0-81CA-7525115445CA}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
