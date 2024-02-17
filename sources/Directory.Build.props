@@ -1,0 +1,21 @@
+<Project>
+    <PropertyGroup>
+        <Company>Mad-World.nl</Company>
+        <Copyright>Copyright (c) Mad-World.nl 2024</Copyright>
+        <Authors>Oscar Veldman</Authors>
+        <Product>Identity</Product>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>true</ImplicitUsings>
+        <Deterministic>true</Deterministic>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>$(SolutionDir.TrimEnd('\'))</DockerfileContext>
+    </PropertyGroup>
+</Project>
