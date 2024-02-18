@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>MadWorldNL.Server.Infrastructure</RootNamespace>
+        <AssemblyName>$(RootNamespace)</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Server.Domain\Server.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
