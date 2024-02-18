@@ -2,5 +2,8 @@
   <ItemGroup>
     <PackageVersion Include="Grpc.AspNetCore" Version="2.60.0" />
     <PackageVersion Include="MadWorldNL.Common.AspNetCore" Version="1.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
   </ItemGroup>
 </Project>

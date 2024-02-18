@@ -9,4 +9,14 @@
       <ProjectReference Include="..\Server.Domain\Server.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Database\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" />
+    </ItemGroup>
+
 </Project>

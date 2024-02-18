@@ -1,4 +1,4 @@
-using Clients.Admin.Components;
+using MadWorldNL.Clients.Admin.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
