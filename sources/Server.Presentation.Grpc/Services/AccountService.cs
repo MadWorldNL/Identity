@@ -12,12 +12,22 @@ public class AccountService : Account.AccountBase
         _logger = logger;
     }
 
-    public override Task<LoginResponse> Login(LoginRequest request, ServerCallContext context)
+    public override Task<ConfirmEmailResponse> ConfirmEmail(ConfirmEmailRequest request, ServerCallContext context)
     {
         throw new NotImplementedException();
     }
 
-    public override Task<LoginResponse> TokenRefresh(RefreshRequest request, ServerCallContext context)
+    public override Task<ForgetPasswordResponse> ForgetPassword(ForgetPasswordRequest request, ServerCallContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Task<ResetPasswordResponse> ResetPassword(ResetPasswordRequest request, ServerCallContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override Task<ResendConfirmationEmailResponse> ResendConfirmationEmail(ResendConfirmationEmailRequest request, ServerCallContext context)
     {
         throw new NotImplementedException();
     }

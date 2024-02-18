@@ -3,11 +3,11 @@
     <PropertyGroup>
         <RootNamespace>MadWorldNL.Server.Presentation.Grpc</RootNamespace>
         <AssemblyName>$(RootNamespace)</AssemblyName>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <Protobuf Include="Protos\account.proto" GrpcServices="Server"/>
+        <Protobuf Include="Protos\authentication.proto" GrpcServices="Server"/>
     </ItemGroup>
 
     <ItemGroup>

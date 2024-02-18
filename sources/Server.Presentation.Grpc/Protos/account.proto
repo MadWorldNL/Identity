@@ -7,22 +7,48 @@ option csharp_namespace = "Server.Presentation.Grpc";
 package account;
 
 service Account {
-  rpc Login (LoginRequest) returns (LoginResponse);
-  rpc TokenRefresh (RefreshRequest) returns (LoginResponse);
+  rpc ConfirmEmail (ConfirmEmailRequest) returns (ConfirmEmailResponse);
+  rpc ForgetPassword (ForgetPasswordRequest) returns (ForgetPasswordResponse);
+  rpc ResendConfirmationEmail (ResendConfirmationEmailRequest) returns (ResendConfirmationEmailResponse);
+  rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse);
 }
 
-message LoginRequest {
-  string username = 1;
-  string password = 2;
+message ConfirmEmailRequest {
+  string userId = 1;
+  string email = 2;
+  string confirmCode = 3;
 }
 
-message RefreshRequest {
-  string refreshToken = 1;
-}
-
-message LoginResponse {
+message ConfirmEmailResponse {
   bool isSuccess = 1;
-  string accessToken = 2;
-  google.protobuf.Timestamp expiration = 3;
-  string refreshToken = 4;
+  string message = 2;
+}
+
+message ForgetPasswordRequest {
+    string email = 1;
+}
+
+message ForgetPasswordResponse {
+  bool isSuccess = 1;
+  string message = 2;
+}
+
+message ResendConfirmationEmailRequest {
+  string email = 1;
+}
+
+message ResendConfirmationEmailResponse {
+  bool isSuccess = 1;
+  string message = 2;
+}
+
+message ResetPasswordRequest {
+  string email = 1;
+  string resetCode = 2;
+  string newPassword = 3;
+}
+
+message ResetPasswordResponse {
+  bool isSuccess = 1;
+  string message = 2;
 }
