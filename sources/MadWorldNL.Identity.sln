@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Application", "Serve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Domain", "Server.Domain\Server.Domain.csproj", "{B8E44E4A-BA6D-43EE-BE23-23BC557BD32A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.Admin", "Clients.Admin\Clients.Admin.csproj", "{DC343525-26E7-417E-9140-5DB722D44A62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,7 @@ Global
 		{BC765338-FF40-4D9E-AC54-789E184B36F4} = {32514DC3-93DB-40F0-81CA-7525115445CA}
 		{EA259647-3CF2-42B4-9BD3-76D0E4262383} = {32514DC3-93DB-40F0-81CA-7525115445CA}
 		{B8E44E4A-BA6D-43EE-BE23-23BC557BD32A} = {32514DC3-93DB-40F0-81CA-7525115445CA}
+		{DC343525-26E7-417E-9140-5DB722D44A62} = {FD69CCDE-B746-4AAF-B04C-9628249B7AD1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -61,5 +64,9 @@ Global
 		{B8E44E4A-BA6D-43EE-BE23-23BC557BD32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8E44E4A-BA6D-43EE-BE23-23BC557BD32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8E44E4A-BA6D-43EE-BE23-23BC557BD32A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC343525-26E7-417E-9140-5DB722D44A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC343525-26E7-417E-9140-5DB722D44A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC343525-26E7-417E-9140-5DB722D44A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC343525-26E7-417E-9140-5DB722D44A62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
