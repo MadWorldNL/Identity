@@ -13,6 +13,7 @@
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" />
         <PackageReference Include="MadWorldNL.Common.AspNetCore" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
     </ItemGroup>
 
     <ItemGroup>
