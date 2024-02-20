@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Server.Presentation.Grpc";
+
+package usermanager;
+
+service UserManager {
+  rpc DeleteSessions (DeleteSessionsRequest) returns (DeleteSessionsResponse);
+  rpc GetRoles (GetRolesRequest) returns (GetRolesResponse);
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  rpc GetUsers (GetUsersRequest) returns (GetUsersResponse);
+  rpc PatchUser (PatchUserRequest) returns (PatchUserResponse);
+}
+
+message DeleteSessionsRequest {
+  string userId = 1;
+}
+
+message DeleteSessionsResponse {
+  bool isSuccess = 1;
+  string message = 2;
+}
+
+message GetRolesRequest {
+}
+
+message GetRolesResponse {
+  repeated string roles = 1;
+}
+
+message GetUserRequest {
+  string UserId = 1;
+}
+
+message GetUserResponse {
+  string UserId = 1;
+  string Email = 2;
+  bool isBlocked = 3;
+  repeated string roles = 4;
+  repeated RefreshToken refreshTokens = 5;
+}
+
+message GetUsersRequest {
+  int32 page = 1;
+}
+
+message GetUsersResponse {
+  int32 totalCount = 1;
+  repeated User users = 2;
+}
+
+message PatchUserRequest {
+  string UserId = 1;
+  bool isBlocked = 2;
+  repeated string roles = 3;
+}
+
+message PatchUserResponse {
+  bool isSuccess = 1;
+  string message = 2;
+}
+
+message RefreshToken {
+  string id = 1;
+  string audience = 2;
+  google.protobuf.Timestamp expiration = 3;
+}
+
+message User {
+  string id = 1;
+  string email = 2;
+  bool isBlocked = 3;
+}
