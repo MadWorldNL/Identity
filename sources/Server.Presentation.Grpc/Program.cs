@@ -2,6 +2,7 @@ using System.Text;
 using MadWorldNL.Common.AspNetCore;
 using MadWorldNL.Server.Infrastructure.Database;
 using MadWorldNL.Server.Presentation.Grpc;
+using MadWorldNL.Server.Presentation.Grpc.Extensions;
 using MadWorldNL.Server.Presentation.Grpc.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -45,5 +46,7 @@ app.MapGet("/",
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MigrateDatabase<UserDbContext>();
 
 app.Run();
