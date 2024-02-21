@@ -1,10 +1,11 @@
 using System.Text;
 using MadWorldNL.Common.AspNetCore;
 using MadWorldNL.Server.Infrastructure.Database;
-using MadWorldNL.Server.Presentation.Grpc;
+using MadWorldNL.Server.Infrastructure.Database.Users;
 using MadWorldNL.Server.Presentation.Grpc.Extensions;
 using MadWorldNL.Server.Presentation.Grpc.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -14,11 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
 
 builder.AddCommonMadWorldNL();
-
+builder.AddIdentityMadWorldNL();
 
 builder.Services.AddDbContext<UserDbContext>(
     options =>
         options.UseNpgsql(builder.BuildConnectionString("IdentityConnectionString")));
+
+builder.Services.AddIdentity<IdentityUserExtended, IdentityRole>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
