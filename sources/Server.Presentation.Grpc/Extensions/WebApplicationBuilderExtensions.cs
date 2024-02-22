@@ -12,6 +12,7 @@ public static class WebApplicationBuilderExtensions
     {
         builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
         builder.Services.AddScoped<LoginUseCase>();
+        builder.Services.AddScoped<RefreshTokenUseCase>();
         builder.Services.AddScoped<RegisterNewUserUseCase>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<ISignInManager, SignInManager>();

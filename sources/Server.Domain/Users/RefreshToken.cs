@@ -2,8 +2,8 @@ namespace MadWorldNL.Server.Domain.Users;
 
 public class RefreshToken
 {
-    public const int MaxLength = 1000;
-
+    public RefreshToken() {}
+    
     public RefreshToken(string token, string audience, DateTime expires, string userId)
     {
         Token = token;
@@ -11,7 +11,6 @@ public class RefreshToken
         Expires = expires;
         UserId = userId;
     }
-    private RefreshToken() {}
     
     public Guid Id { get; set; }
     public string Audience { get; set; } = string.Empty;
@@ -19,4 +18,5 @@ public class RefreshToken
     public DateTime Expires { get; set; }
     
     public string UserId { get; set; } = string.Empty;
+    public IIdentityUser User { get; set; } = null!;
 }

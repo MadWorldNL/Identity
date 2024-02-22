@@ -15,4 +15,17 @@ public static class RefreshTokenMappers
             UserId = refreshToken.UserId
         };
     }
+    
+    public static RefreshToken ToDetails(this RefreshTokenTable table)
+    { 
+        return new RefreshToken()
+        {
+            Id = table.Id,
+            Audience = table.Audience,
+            Token = table.Token,
+            Expires = table.Expires,
+            UserId = table.UserId,
+            User = table.User
+        };
+    }
 }

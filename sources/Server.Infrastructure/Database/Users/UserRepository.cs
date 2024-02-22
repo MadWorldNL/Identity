@@ -1,5 +1,6 @@
 using MadWorldNL.Server.Domain.Users;
 using MadWorldNL.Server.Infrastructure.Database.Users.Mappers;
+using Microsoft.EntityFrameworkCore;
 
 namespace MadWorldNL.Server.Infrastructure.Database.Users;
 
@@ -21,5 +22,14 @@ public class UserRepository : IUserRepository
             .Add(refreshToken);
         
         return _context.SaveChangesAsync();
+    }
+
+    public async Task<RefreshToken?> GetRefreshToken(string token)
+    {
+        var refreshToken = await _context
+            .RefreshTokens
+            .FirstOrDefaultAsync(x => x.Token == token);
+
+        return refreshToken?.ToDetails();
     }
 }

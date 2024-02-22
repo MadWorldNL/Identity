@@ -37,4 +37,5 @@ message RegisterResponse {
 
 message TokenRefreshRequest {
   string refreshToken = 1;
+  string audience = 2;
 }

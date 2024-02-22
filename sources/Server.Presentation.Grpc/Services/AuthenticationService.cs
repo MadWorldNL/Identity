@@ -10,14 +10,17 @@ public class AuthenticationService : Authentication.AuthenticationBase
     private readonly ILogger<AuthenticationService> _logger;
     private readonly LoginUseCase _loginUseCase;
     private readonly RegisterNewUserUseCase _registerNewUserUseCase;
+    private readonly RefreshTokenUseCase _refreshTokenUseCase;
 
     public AuthenticationService(ILogger<AuthenticationService> logger, 
         LoginUseCase loginUseCase, 
-        RegisterNewUserUseCase registerNewUserUseCase)
+        RegisterNewUserUseCase registerNewUserUseCase,
+        RefreshTokenUseCase refreshTokenUseCase)
     {
         _logger = logger;
         _loginUseCase = loginUseCase;
         _registerNewUserUseCase = registerNewUserUseCase;
+        _refreshTokenUseCase = refreshTokenUseCase;
     }
 
     public override async Task<LoginResponse> Login(LoginRequest request, ServerCallContext context)
@@ -34,8 +37,10 @@ public class AuthenticationService : Authentication.AuthenticationBase
         return defaultResponse.ToRegisterResponse();
     }
 
-    public override Task<LoginResponse> TokenRefresh(TokenRefreshRequest request, ServerCallContext context)
+    public override async Task<LoginResponse> TokenRefresh(TokenRefreshRequest request, ServerCallContext context)
     {
-        throw new NotImplementedException();
+        var token = request.ToToken();
+        var newToken = await _refreshTokenUseCase.RefreshToken(token);
+        return newToken.ToLoginResponse();
     }
 }

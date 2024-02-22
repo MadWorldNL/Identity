@@ -12,18 +12,22 @@ public class RefreshTokenTableEntityTypeConfiguration : IEntityTypeConfiguration
         
         builder.Property(x => x.Audience)
             .IsRequired()
-            .HasMaxLength(RefreshToken.MaxLength);
+            .HasMaxLength(RefreshTokenTable.MaxLength);
         
         builder.Property(x => x.Token)
             .IsRequired()
-            .HasMaxLength(RefreshToken.MaxLength);
+            .HasMaxLength(RefreshTokenTable.MaxLength);
 
         builder.Property(x => x.Expires)
             .IsRequired();
         
         builder.Property(x => x.UserId)
             .IsRequired()
-            .HasMaxLength(RefreshToken.MaxLength);
+            .HasMaxLength(RefreshTokenTable.MaxLength);
+        
+        builder
+            .Navigation(e => e.User)
+            .AutoInclude();
 
         builder.HasOne<IdentityUserExtended>(t => t.User)
             .WithMany(u => u.RefreshTokens)
