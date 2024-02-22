@@ -1,5 +1,6 @@
 using System.Text;
 using MadWorldNL.Common.AspNetCore;
+using MadWorldNL.Server.Domain.Jwt;
 using MadWorldNL.Server.Infrastructure.Database;
 using MadWorldNL.Server.Infrastructure.Database.Users;
 using MadWorldNL.Server.Presentation.Grpc.Extensions;
@@ -10,6 +11,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection(nameof(JwtSettings))
+);
 
 // Add services to the container.
 builder.Services.AddGrpc();
