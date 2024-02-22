@@ -11,7 +11,10 @@ public static class WebApplicationBuilderExtensions
     public static void AddIdentityMadWorldNL(this WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
+        builder.Services.AddScoped<LoginUseCase>();
         builder.Services.AddScoped<RegisterNewUserUseCase>();
         builder.Services.AddScoped<IUserManager, UserManager>();
+        builder.Services.AddScoped<ISignInManager, SignInManager>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
     }
 }

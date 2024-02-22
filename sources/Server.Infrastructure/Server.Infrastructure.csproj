@@ -6,17 +6,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Server.Domain\Server.Domain.csproj" />
+        <ProjectReference Include="..\Server.Domain\Server.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Database\Migrations\" />
+        <Folder Include="Database\Migrations\" />
     </ItemGroup>
 
 </Project>

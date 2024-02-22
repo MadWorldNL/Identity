@@ -10,8 +10,9 @@ public sealed class UserManager : IUserManager
 {
     private readonly ILogger<UserManager> _logger;
     private readonly UserManager<IdentityUserExtended> _identityUserManager;
+    private SignInManager test;
 
-    public UserManager(ILogger<UserManager> logger,UserManager<IdentityUserExtended> identityUserManager)
+    public UserManager(ILogger<UserManager> logger, UserManager<IdentityUserExtended> identityUserManager)
     {
         _logger = logger;
         _identityUserManager = identityUserManager;
@@ -48,5 +49,16 @@ public sealed class UserManager : IUserManager
                 ? string.Join(", ", result.Errors.Select(e => e.Description)) 
                 : string.Empty
         };
+    }
+    
+    public async Task<IIdentityUser> FindByEmailAsync(string email)
+    {
+        return await _identityUserManager.FindByEmailAsync(email) ?? throw new UserNotFoundException(email);
+    }
+
+    public async Task<IList<string>> GetRolesByEmailAsync(string email)
+    {
+        var user = await _identityUserManager.FindByEmailAsync(email);
+        return await _identityUserManager.GetRolesAsync(user!);
     }
 }
