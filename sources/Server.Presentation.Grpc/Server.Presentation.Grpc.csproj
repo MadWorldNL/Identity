@@ -15,6 +15,7 @@
         <PackageReference Include="Grpc.AspNetCore" />
         <PackageReference Include="Grpc.AspNetCore.Server.Reflection" />
         <PackageReference Include="MadWorldNL.Common.AspNetCore" />
+        <PackageReference Include="MadWorldNL.Common.Grpc" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
           <PrivateAssets>all</PrivateAssets>
@@ -26,10 +27,6 @@
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageVersion Update="Grpc.AspNetCore" Version="2.60.0" />
     </ItemGroup>
 
     <ItemGroup>
