@@ -19,6 +19,10 @@ public class GrpcGlobalErrorHandlerInterceptor : Interceptor
         {
             return await base.UnaryServerHandler(request, context, continuation);
         }
+        catch (RpcException)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
             _logger.LogError(exception, "Internal Server Error");
