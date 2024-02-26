@@ -34,7 +34,8 @@ builder.Services.AddDbContext<UserDbContext>(
         options.UseNpgsql(builder.BuildConnectionString("IdentityConnectionString")));
 
 builder.Services.AddIdentity<IdentityUserExtended, IdentityRole>()
-    .AddEntityFrameworkStores<UserDbContext>();
+    .AddEntityFrameworkStores<UserDbContext>()
+    .AddTokenProvider<DataProtectorTokenProvider<IdentityUserExtended>>(TokenOptions.DefaultProvider);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

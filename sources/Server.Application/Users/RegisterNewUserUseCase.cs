@@ -1,3 +1,4 @@
+using MadWorldNL.Server.Application.Mappers;
 using MadWorldNL.Server.Domain;
 using MadWorldNL.Server.Domain.Users;
 using MadWorldNL.Server.Domain.Users.RegisterUsers;
@@ -15,6 +16,7 @@ public class RegisterNewUserUseCase
 
     public async Task<DefaultResponse> RegisterNewUser(NewUser user)
     {
-        return await _userManager.CreateAsync(user);
+        var result = await _userManager.CreateAsync(user);
+        return result.ToDefaultResponse();
     }
 }

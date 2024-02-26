@@ -12,9 +12,8 @@ service Account {
 }
 
 message ConfirmEmailRequest {
-  string userId = 1;
-  string email = 2;
-  string confirmCode = 3;
+  string email = 1;
+  string confirmCode = 2;
 }
 
 message ConfirmEmailResponse {
