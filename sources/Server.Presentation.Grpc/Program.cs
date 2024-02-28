@@ -1,5 +1,7 @@
 using System.Text;
 using Common.Grpc;
+using Grpc.AspNetCore.Server;
+using Grpc.Core;
 using MadWorldNL.Common.AspNetCore;
 using MadWorldNL.Server.Domain.Jwt;
 using MadWorldNL.Server.Infrastructure.Database;
@@ -37,7 +39,13 @@ builder.Services.AddIdentity<IdentityUserExtended, IdentityRole>()
     .AddEntityFrameworkStores<UserDbContext>()
     .AddTokenProvider<DataProtectorTokenProvider<IdentityUserExtended>>(TokenOptions.DefaultProvider);
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+                .AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
     {
@@ -45,7 +53,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateAudience = false,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]!))
     };
 });
 
@@ -53,6 +61,8 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 var environment = app.Environment;
+
+app.UseRouting();
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<AccountService>();
