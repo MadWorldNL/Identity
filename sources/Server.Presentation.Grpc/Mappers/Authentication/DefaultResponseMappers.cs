@@ -33,6 +33,15 @@ public static class DefaultResponseMappers
         };
     }
     
+    public static ResendConfirmationEmailResponse ToResendConfirmationEmailResponse(this DefaultResponse response)
+    {
+        return new ResendConfirmationEmailResponse
+        {
+            IsSuccess = response.IsSuccess,
+            Message = response.Message
+        };
+    }
+    
     public static ResetPasswordResponse ToResetPasswordResponse(this DefaultResponse response)
     {
         return new ResetPasswordResponse

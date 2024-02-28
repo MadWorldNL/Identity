@@ -1,3 +1,4 @@
+using MadWorldNL.Server.Domain.Users.ConfirmEmails;
 using MadWorldNL.Server.Domain.Users.ForgotPasswords;
 using MadWorldNL.Server.Domain.Users.RegisterUsers;
 
@@ -10,5 +11,6 @@ public interface IUserManager
     Task<IIdentityUser> FindByEmailAsync(string email);
     Task<ForgotPasswordResult> ForgotPasswordAsync(string email);
     Task<IList<string>> GetRolesByEmailAsync(string email);
+    Task<GenerateConfirmEmailTokenResult> GenerateConfirmEmailToken(string email);
     Task<DefaultResult> ResetPasswordAsync(string email, string token, string newPassword);
 }

@@ -26,7 +26,7 @@ public class ForgotPasswordUseCase
 
         if (result.IsSuccess)
         {
-            _logger.LogError("Forgot password {Email}: {Token}", email, result.Token);
+            _logger.LogInformation("Forgot password {Email}: {Token}", email, result.Token);
         }
 
         return DefaultResponse.Success("If email exists, a reset password link will be sent to the email address.");

@@ -10,16 +10,19 @@ public class AccountService : Account.AccountBase
     private readonly ILogger<AccountService> _logger;
     private readonly ConfirmEmailUseCase _confirmEmailUseCase;
     private readonly ForgotPasswordUseCase _forgotPasswordUseCase;
+    private readonly ResendConfirmationEmailUseCase _resendConfirmationEmailUseCase;
     private readonly ResetPasswordUseCase _resetPasswordUseCase;
 
     public AccountService(ILogger<AccountService> logger, 
         ConfirmEmailUseCase confirmEmailUseCase, 
         ForgotPasswordUseCase forgotPasswordUseCase,
+        ResendConfirmationEmailUseCase resendConfirmationEmailUseCase,
         ResetPasswordUseCase resetPasswordUseCase)
     {
         _logger = logger;
         _confirmEmailUseCase = confirmEmailUseCase;
         _forgotPasswordUseCase = forgotPasswordUseCase;
+        _resendConfirmationEmailUseCase = resendConfirmationEmailUseCase;
         _resetPasswordUseCase = resetPasswordUseCase;
     }
 
@@ -41,8 +44,9 @@ public class AccountService : Account.AccountBase
         return response.ToResetPasswordResponse();
     }
 
-    public override Task<ResendConfirmationEmailResponse> ResendConfirmationEmail(ResendConfirmationEmailRequest request, ServerCallContext context)
+    public override async Task<ResendConfirmationEmailResponse> ResendConfirmationEmail(ResendConfirmationEmailRequest request, ServerCallContext context)
     {
-        throw new NotImplementedException();
+        var response = await _resendConfirmationEmailUseCase.ResendConfirmationEmail(request.Email);
+        return response.ToResendConfirmationEmailResponse();
     }
 }

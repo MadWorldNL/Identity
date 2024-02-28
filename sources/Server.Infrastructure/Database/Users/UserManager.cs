@@ -1,5 +1,6 @@
 using MadWorldNL.Server.Domain;
 using MadWorldNL.Server.Domain.Users;
+using MadWorldNL.Server.Domain.Users.ConfirmEmails;
 using MadWorldNL.Server.Domain.Users.ForgotPasswords;
 using MadWorldNL.Server.Domain.Users.RegisterUsers;
 using Microsoft.AspNetCore.Identity;
@@ -100,6 +101,24 @@ public sealed class UserManager : IUserManager
     {
         var user = await _identityUserManager.FindByEmailAsync(email);
         return await _identityUserManager.GetRolesAsync(user!);
+    }
+
+    public async Task<GenerateConfirmEmailTokenResult> GenerateConfirmEmailToken(string email)
+    {
+        var user = await _identityUserManager.FindByEmailAsync(email);
+        
+        if (user is null)
+        {
+            return new GenerateConfirmEmailTokenResult();
+        }
+        
+        var token = await _identityUserManager.GenerateEmailConfirmationTokenAsync(user);
+        
+        return new GenerateConfirmEmailTokenResult()
+        {
+            EmailExists = true,
+            Token = token
+        };
     }
 
     public async Task<DefaultResult> ResetPasswordAsync(string email, string token, string newPassword)

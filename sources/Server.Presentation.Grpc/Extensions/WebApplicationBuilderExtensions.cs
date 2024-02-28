@@ -16,6 +16,7 @@ public static class WebApplicationBuilderExtensions
         builder.Services.AddScoped<LoginUseCase>();
         builder.Services.AddScoped<RefreshTokenUseCase>();
         builder.Services.AddScoped<RegisterNewUserUseCase>();
+        builder.Services.AddScoped<ResendConfirmationEmailUseCase>();
         builder.Services.AddScoped<ResetPasswordUseCase>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<ISignInManager, SignInManager>();
