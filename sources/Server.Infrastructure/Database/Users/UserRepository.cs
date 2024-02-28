@@ -32,4 +32,12 @@ public class UserRepository : IUserRepository
 
         return refreshToken?.ToDetails();
     }
+
+    public async Task<List<string>> GetRoles()
+    {
+        return await _context.Roles
+            .AsNoTracking()
+            .Select(x => x.Name!)
+            .ToListAsync();
+    }
 }
