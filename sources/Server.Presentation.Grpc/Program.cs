@@ -1,13 +1,10 @@
 using System.Text;
 using Common.Grpc;
-using Grpc.AspNetCore.Server;
-using Grpc.Core;
 using MadWorldNL.Common.AspNetCore;
 using MadWorldNL.Server.Domain.Authorizations;
 using MadWorldNL.Server.Domain.Jwt;
 using MadWorldNL.Server.Infrastructure.Database;
 using MadWorldNL.Server.Infrastructure.Database.Users;
-using MadWorldNL.Server.Presentation.Grpc;
 using MadWorldNL.Server.Presentation.Grpc.Extensions;
 using MadWorldNL.Server.Presentation.Grpc.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -87,5 +84,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MigrateDatabase<UserDbContext>();
+await app.AddAllIdentityRoles();
 
 app.Run();
