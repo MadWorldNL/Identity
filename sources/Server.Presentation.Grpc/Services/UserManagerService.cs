@@ -1,10 +1,11 @@
 using Grpc.Core;
+using MadWorldNL.Server.Domain.Authorizations;
 using Microsoft.AspNetCore.Authorization;
 using Server.Presentation.Grpc;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Services;
 
-[Authorize]
+[Authorize(Policies.RequireAdministratorRole)]
 public class UserManagerService : UserManager.UserManagerBase
 {
     private readonly ILogger<UserManagerService> _logger;

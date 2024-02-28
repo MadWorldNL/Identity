@@ -3,6 +3,7 @@ using Common.Grpc;
 using Grpc.AspNetCore.Server;
 using Grpc.Core;
 using MadWorldNL.Common.AspNetCore;
+using MadWorldNL.Server.Domain.Authorizations;
 using MadWorldNL.Server.Domain.Jwt;
 using MadWorldNL.Server.Infrastructure.Database;
 using MadWorldNL.Server.Infrastructure.Database.Users;
@@ -36,6 +37,7 @@ builder.Services.AddDbContext<UserDbContext>(
         options.UseNpgsql(builder.BuildConnectionString("IdentityConnectionString")));
 
 builder.Services.AddIdentity<IdentityUserExtended, IdentityRole>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<UserDbContext>()
     .AddTokenProvider<DataProtectorTokenProvider<IdentityUserExtended>>(TokenOptions.DefaultProvider);
 
@@ -57,7 +59,11 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(Policies.RequireAdministratorRole,
+        policy => policy.RequireRole(Roles.Adminstrator));
+});
 
 var app = builder.Build();
 var environment = app.Environment;
