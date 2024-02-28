@@ -6,7 +6,7 @@ using Server.Presentation.Grpc;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Services;
 
-[Authorize(Policies.RequireAdministratorRole)]
+[Authorize(Policies.RequireIdentityAdministratorRole)]
 public class UserManagerService : UserManager.UserManagerBase
 {
     private readonly ILogger<UserManagerService> _logger;
