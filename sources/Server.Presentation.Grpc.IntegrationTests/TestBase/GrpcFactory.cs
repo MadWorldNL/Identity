@@ -15,6 +15,7 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
     private HttpMessageHandler? _handler;
     private GrpcChannel? _channel;
+    private HttpClient? _httpClient;
     
     public GrpcChannel Channel => _channel ??= CreateChannel();
     
@@ -52,9 +53,10 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
     {
     }
     
-    public Task InitializeAsync()
+    public async Task InitializeAsync()
     {
-        return PostgreSqlContainer.StartAsync();
+        await PostgreSqlContainer.StartAsync();
+        _httpClient = Server.CreateClient();
     }
     
     public async Task DisposeAsync()
