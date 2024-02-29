@@ -8,7 +8,7 @@
     <ItemGroup>
         <Protobuf Include="Protos\account.proto" GrpcServices="Server"/>
         <Protobuf Include="Protos\authentication.proto" GrpcServices="Server"/>
-        <Protobuf Include="Protos\usermanager.proto" GrpcServices="Server"/>
+        <Protobuf Include="Protos\usermanager.proto" GrpcServices="Both"/>
     </ItemGroup>
 
     <ItemGroup>

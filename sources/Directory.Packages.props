@@ -2,17 +2,31 @@
   <ItemGroup>
     <PackageVersion Include="Grpc.AspNetCore" Version="2.61.0" />
     <PackageVersion Include="Grpc.AspNetCore.Server.Reflection" Version="2.61.0" />
+    <PackageVersion Include="Grpc.Net.Client" Version="2.61.0" />
     <PackageVersion Include="MadWorldNL.Common.AspNetCore" Version="1.0.3" />
     <PackageVersion Include="MadWorldNL.Common.Grpc" Version="1.0.3" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
     <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.2" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />
-    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="7.3.1" />
+    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="7.4.0" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
-    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
+    <PackageVersion Include="Shouldly" Version="4.2.1" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageVersion Include="Testcontainers.PostgreSql" Version="3.7.0" />
+    <PackageVersion Include="xunit" Version="2.7.0" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
   </ItemGroup>
 </Project>

@@ -87,3 +87,5 @@ app.MigrateDatabase<UserDbContext>();
 await app.AddAllIdentityRoles();
 
 app.Run();
+
+public partial class Program { }
