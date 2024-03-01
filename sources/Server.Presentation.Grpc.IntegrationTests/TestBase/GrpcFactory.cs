@@ -62,7 +62,10 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
         _connection = new NpgsqlConnection(PostgreSqlContainer.GetConnectionString());
         Server.CreateClient();
         await _connection.OpenAsync();
-        _respawner = await Respawner.CreateAsync(_connection, new RespawnerOptions());
+        _respawner = await Respawner.CreateAsync(_connection, new RespawnerOptions()
+        {
+            DbAdapter = DbAdapter.Postgres
+        });
     }
     
     public async Task ResetDatabase()
