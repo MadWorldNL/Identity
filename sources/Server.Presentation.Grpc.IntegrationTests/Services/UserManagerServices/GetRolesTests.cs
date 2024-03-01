@@ -1,6 +1,5 @@
 using MadWorldNL.Server.Domain.Authorizations;
 using MadWorldNL.Server.Presentation.Grpc.IntegrationTests.TestBase;
-using MadWorldNL.Server.Presentation.Grpc.Services;
 using Server.Presentation.Grpc;
 using Shouldly;
 

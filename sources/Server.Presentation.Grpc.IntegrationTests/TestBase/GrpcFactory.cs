@@ -45,27 +45,29 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
                 options.UseNpgsql(PostgreSqlContainer.GetConnectionString()));
 
             services.AddSingleton<IPolicyEvaluator, FakePolicyEvaluator>();
-                
-            SetupServices(services);
         });
-        
-        base.ConfigureWebHost(builder);
-    }
 
-    protected virtual void SetupServices(IServiceCollection services)
-    {
+        base.ConfigureWebHost(builder);
     }
     
     public async Task InitializeAsync()
     {
         await PostgreSqlContainer.StartAsync();
         _connection = new NpgsqlConnection(PostgreSqlContainer.GetConnectionString());
-        Server.CreateClient();
         await _connection.OpenAsync();
+
+        Server.CreateClient();
+        
         _respawner = await Respawner.CreateAsync(_connection, new RespawnerOptions()
         {
             DbAdapter = DbAdapter.Postgres
         });
+    }
+    
+    public IServiceScope CreateScope()
+    {
+        var scopeFactory = Server.Services.GetService<IServiceScopeFactory>()!;
+        return scopeFactory.CreateScope();
     }
     
     public async Task ResetDatabase()
