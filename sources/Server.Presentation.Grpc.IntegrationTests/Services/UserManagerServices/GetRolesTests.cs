@@ -7,7 +7,7 @@ using Shouldly;
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.Services.UserManagerServices;
 
 [Collection(Collections.Applcation)]
-public class GetRolesTests
+public class GetRolesTests : IAsyncLifetime
 {
     private readonly GrpcFactory _factory;
 
@@ -28,5 +28,12 @@ public class GetRolesTests
         // Assert
         response.Roles.Count.ShouldBe(1);
         response.Roles[0].ShouldBe(Roles.IdentityAdminstrator);
+    }
+
+    public Task InitializeAsync() => Task.CompletedTask;
+
+    public Task DisposeAsync()
+    {
+        return _factory.ResetDatabase();
     }
 }

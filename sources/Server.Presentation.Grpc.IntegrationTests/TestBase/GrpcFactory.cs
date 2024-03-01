@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Npgsql;
+using Respawn;
 using Testcontainers.PostgreSql;
 
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.TestBase;
@@ -15,7 +17,8 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
     private HttpMessageHandler? _handler;
     private GrpcChannel? _channel;
-    private HttpClient? _httpClient;
+    private Respawner? _respawner = default!;
+    private NpgsqlConnection _connection = default!;
     
     public GrpcChannel Channel => _channel ??= CreateChannel();
     
@@ -56,7 +59,15 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
     public async Task InitializeAsync()
     {
         await PostgreSqlContainer.StartAsync();
-        _httpClient = Server.CreateClient();
+        _connection = new NpgsqlConnection(PostgreSqlContainer.GetConnectionString());
+        Server.CreateClient();
+        await _connection.OpenAsync();
+        _respawner = await Respawner.CreateAsync(_connection, new RespawnerOptions());
+    }
+    
+    public async Task ResetDatabase()
+    {
+        await _respawner!.ResetAsync(_connection);
     }
     
     public async Task DisposeAsync()
