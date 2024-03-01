@@ -7,6 +7,8 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["Directory.Build.props", "/src"]
+COPY ["Directory.Packages.props", "/src"]
 COPY ["Server.Presentation.Grpc/Server.Presentation.Grpc.csproj", "Server.Presentation.Grpc/"]
 RUN dotnet restore "Server.Presentation.Grpc/Server.Presentation.Grpc.csproj"
 COPY . .
