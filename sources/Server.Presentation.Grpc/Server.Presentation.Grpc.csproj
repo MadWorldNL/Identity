@@ -5,6 +5,14 @@
         <AssemblyName>$(RootNamespace)</AssemblyName>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
     <ItemGroup>
         <Protobuf Include="Protos\account.proto" GrpcServices="Both"/>
         <Protobuf Include="Protos\authentication.proto" GrpcServices="Both"/>
