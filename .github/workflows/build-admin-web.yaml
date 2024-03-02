@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}-admin-web
+  PLATFORM_BUILDS: linux/amd64,linux/arm64
   
 jobs:
   build-and-push-image:
@@ -39,5 +40,6 @@ jobs:
           context: ./sources
           file: ./sources/Clients.Admin/Dockerfile
           push: true
+          platforms: ${{ env.PLATFORM_BUILDS }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
