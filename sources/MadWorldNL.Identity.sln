@@ -36,7 +36,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{6612E52A-5F38-4585-8F9C-F0F027020BBD}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\sonarcube.yml = ..\.github\workflows\sonarcube.yml
-		..\.github\workflows\build.yaml = ..\.github\workflows\build.yaml
+		..\.github\workflows\build-backend.yaml = ..\.github\workflows\build-backend.yaml
+		..\.github\workflows\build-admin-web.yaml = ..\.github\workflows\build-admin-web.yaml
 	EndProjectSection
 EndProject
 Global
