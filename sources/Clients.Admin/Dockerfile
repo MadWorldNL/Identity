@@ -24,4 +24,4 @@ RUN dotnet publish "Clients.Admin.csproj" -c $BUILD_CONFIGURATION -o /app/publis
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Clients.Admin.dll"]
+ENTRYPOINT ["dotnet", "MadWorldNL.Clients.Admin.dll"]

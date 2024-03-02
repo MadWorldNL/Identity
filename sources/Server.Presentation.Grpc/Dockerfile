@@ -24,4 +24,4 @@ RUN dotnet publish "Server.Presentation.Grpc.csproj" -c $BUILD_CONFIGURATION -o 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Server.Presentation.Grpc.dll"]
+ENTRYPOINT ["dotnet", "MadWorldNL.Server.Presentation.Grpc.dll"]
