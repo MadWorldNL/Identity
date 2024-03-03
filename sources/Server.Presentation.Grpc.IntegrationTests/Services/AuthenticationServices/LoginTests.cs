@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.Authentication.V1;
 using Shouldly;
 
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.Services.AuthenticationServices;

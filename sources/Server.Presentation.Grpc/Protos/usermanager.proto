@@ -2,9 +2,9 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Server.Presentation.Grpc";
+option csharp_namespace = "Server.Presentation.Grpc.UserManager.V1";
 
-package usermanager;
+package usermanager.v1;
 
 service UserManager {
   rpc DeleteSessions (DeleteSessionsRequest) returns (DeleteSessionsResponse);

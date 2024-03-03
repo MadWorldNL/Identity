@@ -2,7 +2,7 @@ using MadWorldNL.Server.Infrastructure.Database;
 using MadWorldNL.Server.Presentation.Grpc.IntegrationTests.TestBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.Authentication.V1;
 using Shouldly;
 
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.Services.AuthenticationServices;

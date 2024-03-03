@@ -1,6 +1,6 @@
 using Google.Protobuf.WellKnownTypes;
 using MadWorldNL.Server.Domain.Users.Login;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.Authentication.V1;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Mappers.Authentication;
 

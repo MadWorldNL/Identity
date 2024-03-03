@@ -1,5 +1,5 @@
 using MadWorldNL.Server.Domain.Users.RefreshTokens;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.Authentication.V1;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Mappers.Authentication;
 

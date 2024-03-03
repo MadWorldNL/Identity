@@ -1,7 +1,7 @@
 using Grpc.Core;
 using MadWorldNL.Server.Application.Users;
 using MadWorldNL.Server.Presentation.Grpc.Mappers.Authentication;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.Account.V1;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Services;
 

@@ -2,7 +2,7 @@ using MadWorldNL.Server.Infrastructure.Database.Users;
 using MadWorldNL.Server.Presentation.Grpc.IntegrationTests.TestBase;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.Account.V1;
 using Shouldly;
 
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.Services.AccountServices;

@@ -1,6 +1,6 @@
 using MadWorldNL.Server.Domain.Authorizations;
 using MadWorldNL.Server.Presentation.Grpc.IntegrationTests.TestBase;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.UserManager.V1;
 using Shouldly;
 
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.Services.UserManagerServices;

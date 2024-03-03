@@ -2,9 +2,9 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Server.Presentation.Grpc";
+option csharp_namespace = "Server.Presentation.Grpc.Authentication.V1";
 
-package authentication;
+package authentication.v1;
 
 service Authentication {
   rpc Login (LoginRequest) returns (LoginResponse);

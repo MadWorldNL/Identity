@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option csharp_namespace = "Server.Presentation.Grpc";
+option csharp_namespace = "Server.Presentation.Grpc.Account.V1";
 
-package account;
+package account.v1;
 
 service Account {
   rpc ConfirmEmail (ConfirmEmailRequest) returns (ConfirmEmailResponse);

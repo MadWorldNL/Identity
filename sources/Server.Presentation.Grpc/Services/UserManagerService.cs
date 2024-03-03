@@ -2,7 +2,7 @@ using Grpc.Core;
 using MadWorldNL.Server.Application.UserSettings;
 using MadWorldNL.Server.Domain.Authorizations;
 using Microsoft.AspNetCore.Authorization;
-using Server.Presentation.Grpc;
+using Server.Presentation.Grpc.UserManager.V1;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Services;
 
