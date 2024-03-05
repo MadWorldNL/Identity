@@ -18,7 +18,7 @@ public class RegisterTests : IAsyncLifetime
     }
 
     [Fact]
-    public async Task Register_GivenUser_ReturnsOK()
+    public void Register_GivenUser_ReturnsOK()
     {
         // Arrange
         var registerRequest = new RegisterRequest()

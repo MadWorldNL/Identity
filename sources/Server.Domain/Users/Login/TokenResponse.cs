@@ -7,7 +7,7 @@ public class TokenResponse
     public DateTimeOffset Expires  { get; init; }
     public string RefreshToken { get; init; } = string.Empty;
     
-    public string Message { get; set; }
+    public string Message { get; set; } = string.Empty;
 
     public static TokenResponse AccessDenied()
     {

@@ -75,7 +75,7 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
         await _respawner!.ResetAsync(_connection);
     }
     
-    public async Task DisposeAsync()
+    public new async Task DisposeAsync()
     {
         await PostgreSqlContainer.DisposeAsync();
     }

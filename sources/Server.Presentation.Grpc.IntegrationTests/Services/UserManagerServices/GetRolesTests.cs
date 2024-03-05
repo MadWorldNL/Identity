@@ -16,7 +16,7 @@ public class GetRolesTests : IAsyncLifetime
     }
     
     [Fact]
-    public async Task GetRoles_WhenCalled_ReturnsRoles()
+    public void GetRoles_WhenCalled_ReturnsRoles()
     {
         // Arrange
         var userManagerClient = new UserManager.UserManagerClient(_factory.Channel);
