@@ -1,8 +1,8 @@
 using Grpc.Net.Client;
+using MadWorldNL.Common.Time;
 using MadWorldNL.Server.Infrastructure.Database;
 using Microsoft.AspNetCore.Authorization.Policy;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
@@ -41,11 +41,13 @@ public class GrpcFactory : WebApplicationFactory<Program>, IAsyncLifetime
         {
             services.RemoveAll(typeof(UserDbContext));
             services.RemoveAll(typeof(DbContextOptions<UserDbContext>));
+            services.RemoveAll(typeof(IDateTimeProvider));
 
             services.AddDbContext<UserDbContext>(options =>
                 options.UseNpgsql(PostgreSqlContainer.GetConnectionString()));
 
             services.AddSingleton<IPolicyEvaluator, FakePolicyEvaluator>();
+            services.AddScoped<IDateTimeProvider, FakeDateTimeProvider>();
         });
 
         base.ConfigureWebHost(builder);

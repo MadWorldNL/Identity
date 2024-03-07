@@ -1,3 +1,4 @@
+using MadWorldNL.Server.Domain.Users;
 using MadWorldNL.Server.Infrastructure.Database;
 using MadWorldNL.Server.Infrastructure.Database.Users;
 using MadWorldNL.Server.Presentation.Grpc.IntegrationTests.TestBase;
@@ -10,11 +11,11 @@ using Shouldly;
 namespace MadWorldNL.Server.Presentation.Grpc.IntegrationTests.Services.AuthenticationServices;
 
 [Collection(Collections.Applcation)]
-public class LoginTests : IAsyncLifetime
+public class TokenRefresh : IAsyncLifetime
 {
     private readonly GrpcFactory _factory;
 
-    public LoginTests(GrpcFactory factory)
+    public TokenRefresh(GrpcFactory factory)
     {
         _factory = factory;
     }
@@ -23,8 +24,10 @@ public class LoginTests : IAsyncLifetime
     public async Task Login_GivenCredentials_ReturnsToken()
     {
         // Arrange
+        const string audience = "identity@website.nl";
         const string email = "test@test.nl";
         const string password = "Test1234!";
+        const string token = "1234567890";
         
         using var scope = _factory.CreateScope();
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUserExtended>>();
@@ -36,30 +39,32 @@ public class LoginTests : IAsyncLifetime
         await userManager.CreateAsync(user);
         await userManager.AddPasswordAsync(user, password);
 
-        var request = new LoginRequest()
+        var context = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+        var refreshToken = new RefreshTokenTable()
         {
-            Audience = "identity@website.nl",
-            Username = email,
-            Password = password
+            Audience = audience,
+            Token = token,
+            UserId = user.Id,
+            Expires = new DateTime(2000, 2, 1, 0, 0, 0, DateTimeKind.Utc)
+        };
+        context.RefreshTokens.Add(refreshToken);
+        await context.SaveChangesAsync();
+        
+        var request = new TokenRefreshRequest()
+        {
+            Audience = audience,
+            RefreshToken = token
         };
         
         var authenticationClient = new Authentication.AuthenticationClient(_factory.Channel);
         
         // Act
-        var response = authenticationClient.Login(request);
+        var response = authenticationClient.TokenRefresh(request);
 
         // Assert
         response.IsSuccess.ShouldBeTrue();
         response.AccessToken.ShouldNotBeEmpty();
-        response.RefreshToken.ShouldNotBeEmpty();
-        
-        var context = scope.ServiceProvider.GetRequiredService<UserDbContext>();
-        var refreshTokens = context.RefreshTokens.AsNoTracking()
-            .Include(r => r.User)
-            .ToList();
-        
-        refreshTokens.Count.ShouldBe(1);
-        refreshTokens[0].User.Email.ShouldBe(email);
+        response.RefreshToken.ShouldBe(token);
     }
 
     public Task InitializeAsync() => Task.CompletedTask;
