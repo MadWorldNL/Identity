@@ -40,6 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{
 		..\.github\workflows\build-admin-web.yaml = ..\.github\workflows\build-admin-web.yaml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSdk.Grpc", "ClientSdk.Grpc\ClientSdk.Grpc.csproj", "{9963EC55-AADF-4940-AE11-EBCD9F372920}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,7 @@ Global
 		{DC343525-26E7-417E-9140-5DB722D44A62} = {FD69CCDE-B746-4AAF-B04C-9628249B7AD1}
 		{60C2824A-17C1-4019-8749-65AE0448E5B3} = {0336D5D8-8B04-4701-804F-158356ED9475}
 		{6612E52A-5F38-4585-8F9C-F0F027020BBD} = {1648BD75-33AE-4918-AD6A-D12B0A3BC52F}
+		{9963EC55-AADF-4940-AE11-EBCD9F372920} = {4FEA52A1-D597-4D02-A23B-15E6E41589DF}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -83,5 +86,9 @@ Global
 		{60C2824A-17C1-4019-8749-65AE0448E5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60C2824A-17C1-4019-8749-65AE0448E5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60C2824A-17C1-4019-8749-65AE0448E5B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9963EC55-AADF-4940-AE11-EBCD9F372920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9963EC55-AADF-4940-AE11-EBCD9F372920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9963EC55-AADF-4940-AE11-EBCD9F372920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9963EC55-AADF-4940-AE11-EBCD9F372920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
