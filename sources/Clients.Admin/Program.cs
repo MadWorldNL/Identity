@@ -1,10 +1,16 @@
 using MadWorldNL.Clients.Admin.Components;
+using MadWorldNL.Clients.Admin.Extensions;
+using MadWorldNL.Clients.Admin.Services;
+using Server.Presentation.Grpc.Authentication.V1;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.AddGrpcClients();
+builder.AddAdminServices();
 
 var app = builder.Build();
 
