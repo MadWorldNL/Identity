@@ -20,6 +20,7 @@
       <PackageReference Include="Grpc.Net.ClientFactory" />
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+      <PackageReference Include="Radzen.Blazor" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
     </ItemGroup>
 

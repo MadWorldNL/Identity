@@ -20,6 +20,7 @@
     <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="7.4.0" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    <PackageVersion Include="Radzen.Blazor" Version="4.28.5" />
     <PackageVersion Include="Respawn" Version="6.2.1" />
     <PackageVersion Include="Shouldly" Version="4.2.1" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />

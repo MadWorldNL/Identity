@@ -3,6 +3,7 @@ using MadWorldNL.Clients.Admin.Components;
 using MadWorldNL.Clients.Admin.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,8 @@ builder.Services.AddAuthorization();
 
 builder.AddGrpcClients();
 builder.AddAdminServices();
+
+builder.Services.AddRadzenComponents();
 
 var app = builder.Build();
 

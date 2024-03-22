@@ -1,8 +1,12 @@
 @page "/Login"
 @using MadWorldNL.Clients.Admin.Services.Authentications
-@using Microsoft.AspNetCore.Components.Authorization
 @using MadWorldNL.Clients.Admin.Application.Authentications
+
+<p>@Message</p>
+
 <h3>Login</h3>
+
+<RadzenButton Click="@TryLogin" Text="Try to Login" />
 
 @code {
     [Inject] 
@@ -13,10 +17,16 @@
     
     [Inject]
     public NavigationManager NavigationManager { get; set; } = null!;
-    public void TryLogin()
+    
+    private string Message { get; set; } = string.Empty;
+    private void TryLogin()
     {
-        var result = AuthenticationService.Login("test@test.nl", "password", "http://localhost:5000");
-        if (!result.IsSuccess) return;
+        var result = AuthenticationService.Login("email@emai.nl", "Password1234", "http://localhost:5000");
+        if (!result.IsSuccess)
+        {
+            Message = "Something went wrong";
+            return;
+        }
         
         ((JwtAuthenticationStateProvider)AuthenticationStateProvider).Authenticate(result.AccessToken);
         NavigationManager.NavigateTo("/AuthenticationTest");
