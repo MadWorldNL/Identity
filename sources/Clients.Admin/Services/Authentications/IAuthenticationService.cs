@@ -1,6 +1,6 @@
 using MadWorldNL.Clients.Admin.Domain;
 
-namespace MadWorldNL.Clients.Admin.Services;
+namespace MadWorldNL.Clients.Admin.Services.Authentications;
 
 public interface IAuthenticationService
 {

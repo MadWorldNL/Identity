@@ -1,7 +1,7 @@
 using MadWorldNL.Clients.Admin.Domain;
 using Server.Presentation.Grpc.Authentication.V1;
 
-namespace MadWorldNL.Clients.Admin.Services;
+namespace MadWorldNL.Clients.Admin.Services.Authentications;
 
 public class AuthenticationService : IAuthenticationService
 {

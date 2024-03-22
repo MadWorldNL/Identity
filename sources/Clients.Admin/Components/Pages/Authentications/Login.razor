@@ -1,0 +1,24 @@
+@page "/Login"
+@using MadWorldNL.Clients.Admin.Services.Authentications
+@using Microsoft.AspNetCore.Components.Authorization
+@using MadWorldNL.Clients.Admin.Application.Authentications
+<h3>Login</h3>
+
+@code {
+    [Inject] 
+    public IAuthenticationService AuthenticationService { get; set; } = null!;
+
+    [Inject]
+    public AuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
+    
+    [Inject]
+    public NavigationManager NavigationManager { get; set; } = null!;
+    public void TryLogin()
+    {
+        var result = AuthenticationService.Login("test@test.nl", "password", "http://localhost:5000");
+        if (!result.IsSuccess) return;
+        
+        ((JwtAuthenticationStateProvider)AuthenticationStateProvider).Authenticate(result.AccessToken);
+        NavigationManager.NavigateTo("/AuthenticationTest");
+    }
+}

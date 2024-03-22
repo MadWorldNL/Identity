@@ -18,6 +18,9 @@
     <ItemGroup>
       <PackageReference Include="Grpc.Net.Client" />
       <PackageReference Include="Grpc.Net.ClientFactory" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
     </ItemGroup>
 
 </Project>
