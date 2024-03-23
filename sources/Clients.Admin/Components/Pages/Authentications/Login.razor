@@ -18,11 +18,18 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        if (!firstRender)
         {
-            await AuthenticationManager.LoginFromSessionAsync();
-            StateHasChanged();   
+            return;
         }
+
+        var result = await AuthenticationManager.LoginFromSessionAsync();
+        if (result.IsSuccess)
+        {
+            NavigationManager.NavigateTo("/AuthenticationTest");
+        }
+        
+        StateHasChanged();
     }
 
     private async Task TryLogin()

@@ -9,11 +9,13 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        if (!firstRender)
         {
-            await AuthenticationManager.LogoutAsync();
-            StateHasChanged();
+            return;
         }
+
+        await AuthenticationManager.LogoutAsync();
+        StateHasChanged();
     }
 
 }
