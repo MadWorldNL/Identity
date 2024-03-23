@@ -1,5 +1,4 @@
 @page "/Login"
-@using MadWorldNL.Clients.Admin.Services.Authentications
 @using MadWorldNL.Clients.Admin.Application.Authentications
 
 <p>@Message</p>
@@ -10,25 +9,31 @@
 
 @code {
     [Inject] 
-    public IAuthenticationService AuthenticationService { get; set; } = null!;
-
-    [Inject]
-    public AuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
+    public IAuthenticationManager AuthenticationManager { get; set; } = null!;
     
     [Inject]
     public NavigationManager NavigationManager { get; set; } = null!;
     
     private string Message { get; set; } = string.Empty;
-    private void TryLogin()
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var result = AuthenticationService.Login("email@emai.nl", "Password1234", "http://localhost:5000");
+        if (firstRender)
+        {
+            await AuthenticationManager.LoginFromSessionAsync();
+            StateHasChanged();   
+        }
+    }
+
+    private async Task TryLogin()
+    {
+        var result = await AuthenticationManager.LoginAsync("t", "t");
         if (!result.IsSuccess)
         {
             Message = "Something went wrong";
             return;
         }
         
-        ((JwtAuthenticationStateProvider)AuthenticationStateProvider).Authenticate(result.AccessToken);
         NavigationManager.NavigateTo("/AuthenticationTest");
     }
 }

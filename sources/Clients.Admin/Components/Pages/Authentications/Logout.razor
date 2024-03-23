@@ -1,0 +1,19 @@
+@page "/Logout"
+@using MadWorldNL.Clients.Admin.Application.Authentications
+
+<h3>You are logout now. Until next time!</h3>
+
+@code {
+    [Inject] 
+    public IAuthenticationManager AuthenticationManager { get; set; } = null!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await AuthenticationManager.LogoutAsync();
+            StateHasChanged();
+        }
+    }
+
+}

@@ -19,6 +19,8 @@ public static class WebApplicationBuilderExtensions
     {
         builder.Services.AddScoped<AuthenticationStateProvider, JwtAuthenticationStateProvider>();
         
+        builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
+        
         builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
     }
 }

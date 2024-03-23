@@ -27,6 +27,7 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
     public void Logout()
     {
         _currentUserState = GetAnonymous();
+        NotifyAuthenticationStateChanged(Task.FromResult(_currentUserState));
     }
 
     private static AuthenticationState GetAnonymous()
