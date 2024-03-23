@@ -1,4 +1,4 @@
-namespace MadWorldNL.Clients.Admin.Domain;
+namespace MadWorldNL.Clients.Admin.Domain.Authentications;
 
 public class AuthenticationToken
 {

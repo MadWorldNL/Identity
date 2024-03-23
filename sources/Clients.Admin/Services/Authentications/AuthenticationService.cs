@@ -1,4 +1,4 @@
-using MadWorldNL.Clients.Admin.Domain;
+using MadWorldNL.Clients.Admin.Domain.Authentications;
 using Server.Presentation.Grpc.Authentication.V1;
 
 namespace MadWorldNL.Clients.Admin.Services.Authentications;
@@ -22,6 +22,24 @@ public class AuthenticationService : IAuthenticationService
         };
         
         var response = _client.Login(request);
+
+        return new AuthenticationToken()
+        {
+            IsSuccess = response.IsSuccess,
+            AccessToken = response.AccessToken,
+            RefreshToken = response.RefreshToken,
+            Expires = response.Expiration.ToDateTime()
+        };
+    }
+    
+    public AuthenticationToken RefreshToken(string refreshToken)
+    {
+        var request = new TokenRefreshRequest()
+        {
+            RefreshToken = refreshToken
+        };
+        
+        var response = _client.TokenRefresh(request);
 
         return new AuthenticationToken()
         {
