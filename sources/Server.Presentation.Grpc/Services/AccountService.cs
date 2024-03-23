@@ -1,12 +1,10 @@
 using Grpc.Core;
 using MadWorldNL.Server.Application.Users;
 using MadWorldNL.Server.Presentation.Grpc.Mappers.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Server.Presentation.Grpc.Account.V1;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Services;
 
-[Authorize]
 public class AccountService : Account.AccountBase
 {
     private readonly ILogger<AccountService> _logger;

@@ -34,7 +34,7 @@
 
     private async Task TryLogin()
     {
-        var result = await AuthenticationManager.LoginAsync("t", "t");
+        var result = await AuthenticationManager.LoginAsync("k", "k");
         if (!result.IsSuccess)
         {
             Message = "Something went wrong";

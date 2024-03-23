@@ -1,0 +1,31 @@
+@using MadWorldNL.Clients.Admin.Domain.Authorizations
+@using MadWorldNL.Clients.Admin.Services.Authentications
+@using Server.Presentation.Grpc.UserManager.V1
+
+@page "/Users"
+@attribute [Authorize(Policies.RequireIdentityAdministratorRole)]
+<h3>Users</h3>
+
+@foreach (var user in LoadedUsers)
+{
+    @user.Email
+}
+
+@code {
+    [Inject]
+    public IUserManagerService UserManagerService { get; set; } = default!;
+
+    private IReadOnlyList<User> LoadedUsers { get; set; } = [];
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            return Task.CompletedTask;
+        }
+
+        LoadedUsers = UserManagerService.GetUsers(0);
+        
+        return Task.CompletedTask;
+    }
+}

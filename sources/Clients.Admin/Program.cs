@@ -1,5 +1,6 @@
 using System.Text;
 using MadWorldNL.Clients.Admin.Components;
+using MadWorldNL.Clients.Admin.Domain.Authorizations;
 using MadWorldNL.Clients.Admin.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -29,7 +30,11 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(Policies.RequireIdentityAdministratorRole,
+        policy => policy.RequireRole(Roles.IdentityAdminstrator));
+});
 
 builder.AddGrpcClients();
 builder.AddAdminServices();

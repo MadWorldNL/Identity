@@ -85,6 +85,7 @@ app.UseAuthorization();
 
 app.MigrateDatabase<UserDbContext>();
 await app.AddAllIdentityRoles();
+await app.AddFirstAdminAccount();
 
 app.Run();
 

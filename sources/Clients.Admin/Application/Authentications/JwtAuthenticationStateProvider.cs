@@ -18,7 +18,7 @@ public class JwtAuthenticationStateProvider : AuthenticationStateProvider
     public void Authenticate(string jwtToken)
     {
         var securityToken = new JwtSecurityToken(jwtToken);
-        var identity = new ClaimsIdentity(securityToken.Claims, AuthenticationType);
+        var identity = new ClaimsIdentity(securityToken.Claims, AuthenticationType, "name", "role");
         var user = new ClaimsPrincipal(identity);
         _currentUserState = new AuthenticationState(user);
         NotifyAuthenticationStateChanged(Task.FromResult(_currentUserState));
