@@ -1,7 +1,6 @@
 using MadWorldNL.Clients.Admin.Application.Authentications;
 using MadWorldNL.Clients.Admin.Services.Authentications;
 using Microsoft.AspNetCore.Components.Authorization;
-using Server.Presentation.Grpc.Account.V1;
 using Server.Presentation.Grpc.Authentication.V1;
 using Server.Presentation.Grpc.UserManager.V1;
 
@@ -11,7 +10,7 @@ public static class WebApplicationBuilderExtensions
 {
     public static void AddGrpcClients(this WebApplicationBuilder builder)
     {
-        builder.Services.AddScoped<GrpcHttpMessageHandler>();
+        builder.Services.AddTransient<GrpcHttpMessageHandler>();
         
         builder.Services.AddGrpcClient<Authentication.AuthenticationClient>(o =>
         {

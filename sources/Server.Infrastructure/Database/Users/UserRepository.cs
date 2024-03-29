@@ -40,4 +40,15 @@ public class UserRepository : IUserRepository
             .Select(x => x.Name!)
             .ToListAsync();
     }
+    
+    public IReadOnlyList<IIdentityUser> GetUsers(int page)
+    {
+        const int pageSize = 10;
+
+        return _context.Users
+            .AsNoTracking()
+            .Skip(page * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
 }

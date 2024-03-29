@@ -15,6 +15,7 @@ public static class WebApplicationBuilderExtensions
         builder.Services.AddScoped<ConfirmEmailUseCase>();
         builder.Services.AddScoped<ForgotPasswordUseCase>();
         builder.Services.AddScoped<GetAllRolesUseCase>();
+        builder.Services.AddScoped<GetUsersUserCase>();
         builder.Services.AddScoped<LoginUseCase>();
         builder.Services.AddScoped<RefreshTokenUseCase>();
         builder.Services.AddScoped<RegisterNewUserUseCase>();

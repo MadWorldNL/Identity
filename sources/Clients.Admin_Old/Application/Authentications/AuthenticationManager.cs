@@ -39,7 +39,7 @@ public class AuthenticationManager : IAuthenticationManager
 
         if (token.IsSuccess)
         {
-            _authenticationStateProvider.Authenticate(token.AccessToken);    
+            _authenticationStateProvider.Authenticate(token);    
         }
         
         return token;
@@ -88,6 +88,6 @@ public class AuthenticationManager : IAuthenticationManager
     private async Task AuthenticateAsync(AuthenticationToken token)
     {
         await _localStorage.SetAsync(AuthenticationToken.Entry, token);
-        _authenticationStateProvider.Authenticate(token.AccessToken); 
+        _authenticationStateProvider.Authenticate(token); 
     }
 }

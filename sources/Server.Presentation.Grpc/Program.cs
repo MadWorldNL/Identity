@@ -8,8 +8,10 @@ using MadWorldNL.Server.Infrastructure.Database.Users;
 using MadWorldNL.Server.Presentation.Grpc.Extensions;
 using MadWorldNL.Server.Presentation.Grpc.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);

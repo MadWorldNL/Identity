@@ -1,8 +1,11 @@
 using System.Text;
+using MadWorldNL.Clients.Admin.Application.Authentications;
 using MadWorldNL.Clients.Admin.Components;
 using MadWorldNL.Clients.Admin.Domain.Authorizations;
 using MadWorldNL.Clients.Admin.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Components.Server.Circuits;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Radzen;
 
@@ -39,6 +42,10 @@ builder.Services.AddAuthorization(options =>
 builder.AddGrpcClients();
 builder.AddAdminServices();
 
+builder.Services.AddScoped<UserService>();
+builder.Services.TryAddEnumerable(
+    ServiceDescriptor.Scoped<CircuitHandler, UserCircuitHandler>());
+
 builder.Services.AddRadzenComponents();
 
 var app = builder.Build();
@@ -61,5 +68,7 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+app.UseMiddleware<UserServiceMiddleware>();
 
 app.Run();
