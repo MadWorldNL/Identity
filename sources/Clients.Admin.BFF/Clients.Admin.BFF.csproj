@@ -16,4 +16,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Clients.Identity.Api.Shared\Clients.Identity.Api.Shared.csproj" />
+    </ItemGroup>
+
 </Project>
