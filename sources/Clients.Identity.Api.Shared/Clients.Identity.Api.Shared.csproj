@@ -6,11 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Grpc.AspNetCore" />
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <ProjectReference Include="..\ClientSdk.Grpc\ClientSdk.Grpc.csproj" />
     </ItemGroup>
 
 </Project>

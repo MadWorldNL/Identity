@@ -1,6 +1,0 @@
-@Clients.Admin.BFF_HostAddress = http://localhost:5144
-
-GET {{Clients.Admin.BFF_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
