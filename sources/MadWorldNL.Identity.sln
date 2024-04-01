@@ -52,6 +52,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F11E5F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.Identity.Api.Contracts", "Clients.Identity.Api.Contracts\Clients.Identity.Api.Contracts.csproj", "{6EE2F699-9915-4D62-96DB-5361C5094193}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients.Identity.Blazor.Shared", "Clients.Identity.Blazor.Shared\Clients.Identity.Blazor.Shared.csproj", "{20A178D0-8AA7-4DAE-A866-E8BFB4F362FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,7 @@ Global
 		{F11E5F0F-DE3D-466E-AB4E-3AEE0BE5A5ED} = {FD69CCDE-B746-4AAF-B04C-9628249B7AD1}
 		{7F925140-B483-461E-9740-646E40771F4E} = {F11E5F0F-DE3D-466E-AB4E-3AEE0BE5A5ED}
 		{6EE2F699-9915-4D62-96DB-5361C5094193} = {F11E5F0F-DE3D-466E-AB4E-3AEE0BE5A5ED}
+		{20A178D0-8AA7-4DAE-A866-E8BFB4F362FA} = {F11E5F0F-DE3D-466E-AB4E-3AEE0BE5A5ED}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2B04007E-B2D9-4E8B-82D2-C553CD5F3DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -121,5 +124,9 @@ Global
 		{6EE2F699-9915-4D62-96DB-5361C5094193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EE2F699-9915-4D62-96DB-5361C5094193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EE2F699-9915-4D62-96DB-5361C5094193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20A178D0-8AA7-4DAE-A866-E8BFB4F362FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20A178D0-8AA7-4DAE-A866-E8BFB4F362FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20A178D0-8AA7-4DAE-A866-E8BFB4F362FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20A178D0-8AA7-4DAE-A866-E8BFB4F362FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

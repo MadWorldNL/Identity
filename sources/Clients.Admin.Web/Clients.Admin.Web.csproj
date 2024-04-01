@@ -16,4 +16,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Clients.Identity.Blazor.Shared\Clients.Identity.Blazor.Shared.csproj" />
+    </ItemGroup>
+
 </Project>
