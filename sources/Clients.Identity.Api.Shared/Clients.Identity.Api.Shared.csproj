@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Clients.Identity.Api.Contracts\Clients.Identity.Api.Contracts.csproj" />
       <ProjectReference Include="..\ClientSdk.Grpc\ClientSdk.Grpc.csproj" />
     </ItemGroup>
 

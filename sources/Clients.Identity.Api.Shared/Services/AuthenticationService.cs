@@ -1,22 +1,17 @@
-using MadWorldNL.Clients.Identity.Api.Shared.Authentications;
+using MadWorldNL.Clients.Identity.Api.Contracts.Authentications;
 using MadWorldNL.Clients.Identity.Api.Shared.Settings;
 using Microsoft.Extensions.Options;
 using Server.Presentation.Grpc.Authentication.V1;
 
 namespace MadWorldNL.Clients.Identity.Api.Shared.Services;
 
-public sealed class AuthenticationService
+public sealed class AuthenticationService(
+    Authentication.AuthenticationClient client,
+    IOptions<IdentitySettings> identitySettings)
 {
-    private readonly Authentication.AuthenticationClient _client;
-    private readonly IdentitySettings _identitySettings;
+    private readonly IdentitySettings _identitySettings = identitySettings.Value;
 
-    public AuthenticationService(Authentication.AuthenticationClient client, IOptions<IdentitySettings> identitySettings)
-    {
-        _client = client;
-        _identitySettings = identitySettings.Value;
-    }
-    
-    public async Task<LoginResponse> AuthenticateAsync(LoginProxyRequest proxyRequest)
+    public async Task<LoginProxyResponse> AuthenticateAsync(LoginProxyRequest proxyRequest)
     {
         var request = new LoginRequest
         {
@@ -25,6 +20,14 @@ public sealed class AuthenticationService
             Password = proxyRequest.Password
         };
         
-        return await _client.LoginAsync(request);
+        var response = await client.LoginAsync(request);
+
+        return new LoginProxyResponse()
+        {
+            IsSuccess = response.IsSuccess,
+            AccessToken = response.AccessToken,
+            Expiration = response.Expiration.ToDateTime(),
+            RefreshToken = response.RefreshToken
+        };
     }
 }
