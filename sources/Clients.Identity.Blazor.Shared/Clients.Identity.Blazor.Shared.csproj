@@ -10,13 +10,17 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
         <PackageReference Include="Microsoft.Extensions.Http" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Clients.Identity.Api.Contracts\Clients.Identity.Api.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageVersion Update="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
     </ItemGroup>
 
 </Project>
