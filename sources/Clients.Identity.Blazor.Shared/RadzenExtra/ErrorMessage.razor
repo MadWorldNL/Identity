@@ -1,0 +1,14 @@
+@if (Show)
+{
+    <RadzenAlert AlertStyle="AlertStyle.Danger" Variant="Variant.Flat" Shade="Shade.Lighter">
+        @Message
+    </RadzenAlert>
+}
+
+@code {
+    [Parameter]
+    public bool Show { get; set; }
+  
+    [Parameter]
+    public string Message { get; set; } = string.Empty;
+}

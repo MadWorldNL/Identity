@@ -16,7 +16,7 @@ public class AuthenticationService : IAuthenticationService
     
     public async Task<LoginProxyResponse> LoginAsync(LoginProxyRequest request)
     {
-        var response = await _client.PostAsJsonAsync(Endpoint, request);
+        var response = await _client.PostAsJsonAsync($"{Endpoint}/Login", request);
         return await response.Content.ReadFromJsonAsync<LoginProxyResponse>() ?? new LoginProxyResponse();
     }
 }

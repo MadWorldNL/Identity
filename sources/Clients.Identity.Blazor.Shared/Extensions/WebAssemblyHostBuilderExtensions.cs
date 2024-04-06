@@ -1,5 +1,6 @@
 using MadWorldNL.Clients.Identity.Blazor.Shared.Authentications;
 using MadWorldNL.Clients.Identity.Blazor.Shared.Settings;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -10,9 +11,14 @@ public static class WebAssemblyHostBuilderExtensions
 {
     public static void AddIdentity(this WebAssemblyHostBuilder builder)
     {
+        builder.Services.AddCascadingAuthenticationState();
+        builder.Services.AddScoped<AuthenticationStateProvider, MyAuthenticationStateProvider>();
+        builder.Services.AddAuthorizationCore();
+        
         builder.Services.AddOptions<IdentitySettings>()
             .Bind(builder.Configuration.GetSection(IdentitySettings.Entry));
 
+        builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
         builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
         
         builder.AddIdentityClients();
