@@ -11,11 +11,10 @@ public partial class Login
     private LoginProxyRequest _loginRequest = new();
     private bool _showError = false;
     
-    private string TempLoginMessage = string.Empty;
-    
-    public async Task LoginAsync()
+    private async Task LoginAsync()
     {
         var response = await AuthenticationManager.LoginAsync(_loginRequest);
+        StateHasChanged();
         
         if (!response.IsSuccess)
         {
@@ -25,7 +24,5 @@ public partial class Login
         }
         
         _showError = false;
-        
-        TempLoginMessage = response.Expiration.ToString();
     }
 }

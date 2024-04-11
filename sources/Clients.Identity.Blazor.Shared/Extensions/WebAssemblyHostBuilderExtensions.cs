@@ -20,6 +20,7 @@ public static class WebAssemblyHostBuilderExtensions
 
         builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
         builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+        builder.Services.AddScoped<IAuthenticationStorage, AuthenticationLocalStorage>();
         
         builder.AddIdentityClients();
     }
