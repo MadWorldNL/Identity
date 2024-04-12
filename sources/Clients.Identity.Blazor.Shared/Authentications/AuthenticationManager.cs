@@ -25,9 +25,8 @@ public class AuthenticationManager : IAuthenticationManager
         return response;
     }
 
-    public async Task LogoutAsync()
+    public async Task<LoginProxyResponse> GetActiveTokenFromSession()
     {
-        await _authenticationStorage.SetAccessTokenAsync(new LoginProxyResponse());
-        await _authenticationStateProvider.GetAuthenticationStateAsync();
+        return await _authenticationStorage.GetAccessTokenAsync();
     }
 }

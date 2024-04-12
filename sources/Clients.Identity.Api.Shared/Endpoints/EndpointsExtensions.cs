@@ -22,5 +22,10 @@ public static class EndpointsExtensions
                 ([FromBody] LoginProxyRequest request, [FromServices] AuthenticationService authenticationService) =>
                     authenticationService.AuthenticateAsync(request))
             .WithName("Login");
+        
+        authenticationEndpoints.MapGet("/Logout", ([FromServices] AuthenticationService authenticationService) =>
+                    authenticationService.LogoutAsync())
+            .RequireAuthorization()
+            .WithName("Logout");
     }
 }

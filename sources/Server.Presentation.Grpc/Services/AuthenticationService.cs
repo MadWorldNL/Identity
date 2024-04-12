@@ -1,6 +1,8 @@
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MadWorldNL.Server.Application.Users;
 using MadWorldNL.Server.Presentation.Grpc.Mappers.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Server.Presentation.Grpc.Authentication.V1;
 
 namespace MadWorldNL.Server.Presentation.Grpc.Services;
@@ -28,6 +30,15 @@ public class AuthenticationService : Authentication.AuthenticationBase
         var login = request.ToLogin();
         var token = await _loginUseCase.Login(login);
         return token.ToLoginResponse();
+    }
+
+    [Authorize]
+    public override Task<LogoutResponse> Logout(Empty request, ServerCallContext context)
+    {
+        return Task.FromResult(new LogoutResponse()
+        {
+            IsSuccess = true
+        });
     }
 
     public override async Task<RegisterResponse> Register(RegisterRequest request, ServerCallContext context)

@@ -8,15 +8,16 @@ public class AuthenticationService : IAuthenticationService
 {
     private const string Endpoint = "Authentication";
     
-    private readonly HttpClient _client;
+    private readonly HttpClient _httpClient;
     public AuthenticationService(IHttpClientFactory clientFactory)
     {
-        _client = clientFactory.CreateClient(ApiTypes.AnonymousIdentity);
+        _httpClient = clientFactory.CreateClient(ApiTypes.AnonymousIdentity);
     }
     
     public async Task<LoginProxyResponse> LoginAsync(LoginProxyRequest request)
     {
-        var response = await _client.PostAsJsonAsync($"{Endpoint}/Login", request);
-        return await response.Content.ReadFromJsonAsync<LoginProxyResponse>() ?? new LoginProxyResponse();
+        var response = await _httpClient.PostAsJsonAsync($"{Endpoint}/Login", request);
+        return await response.Content.ReadFromJsonAsync<LoginProxyResponse>() 
+               ?? new LoginProxyResponse();
     }
 }

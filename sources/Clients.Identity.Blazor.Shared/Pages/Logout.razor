@@ -1,13 +1,13 @@
 @page "/Logout"
-@using MadWorldNL.Clients.Identity.Blazor.Shared.Authentications
+@using MadWorldNL.Clients.Identity.Blazor.Shared.Accounts
+
 <h3>You are logged out now!</h3>
 
 @code {
-    [Inject] public IAuthenticationManager AuthenticationManager { get; set; } = null!;
+    [Inject] public IAccountManager AccountManager { get; set; } = null!;
 
     protected override async Task OnInitializedAsync()
     {
-        await AuthenticationManager.LogoutAsync();
+        await AccountManager.LogoutAsync();
     }
-
 }

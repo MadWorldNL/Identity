@@ -1,3 +1,4 @@
+using MadWorldNL.Clients.Identity.Blazor.Shared.Accounts;
 using MadWorldNL.Clients.Identity.Blazor.Shared.Authentications;
 using MadWorldNL.Clients.Identity.Blazor.Shared.Settings;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -18,9 +19,14 @@ public static class WebAssemblyHostBuilderExtensions
         builder.Services.AddOptions<IdentitySettings>()
             .Bind(builder.Configuration.GetSection(IdentitySettings.Entry));
 
+        builder.Services.AddScoped<MyHttpMessageHandler>();
+        
         builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
         builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
         builder.Services.AddScoped<IAuthenticationStorage, AuthenticationLocalStorage>();
+
+        builder.Services.AddScoped<IAccountManager, AccountManager>();
+        builder.Services.AddScoped<IAccountService, AccountService>();
         
         builder.AddIdentityClients();
     }
@@ -32,11 +38,11 @@ public static class WebAssemblyHostBuilderExtensions
             var identitySettingsOption = serviceProvider.GetService<IOptions<IdentitySettings>>()!;
             client.BaseAddress = new Uri(identitySettingsOption.Value.Host!);
         });
-        
+
         builder.Services.AddHttpClient(ApiTypes.Identity, (serviceProvider, client) =>
         {
             var identitySettingsOption = serviceProvider.GetService<IOptions<IdentitySettings>>()!;
             client.BaseAddress = new Uri(identitySettingsOption.Value.Host!);
-        });
+        }).AddHttpMessageHandler<MyHttpMessageHandler>();
     }
 }

@@ -1,3 +1,4 @@
+using Google.Protobuf.WellKnownTypes;
 using MadWorldNL.Clients.Identity.Api.Contracts.Authentications;
 using MadWorldNL.Clients.Identity.Api.Shared.Settings;
 using Microsoft.Extensions.Options;
@@ -28,6 +29,16 @@ public sealed class AuthenticationService(
             AccessToken = response.AccessToken,
             Expiration = response.Expiration.ToDateTime(),
             RefreshToken = response.RefreshToken
+        };
+    }
+
+    public async Task<LogoutProxyResponse> LogoutAsync()
+    {
+        var response = await client.LogoutAsync(new Empty());
+
+        return new LogoutProxyResponse()
+        {
+            IsSuccess = response.IsSuccess
         };
     }
 }
