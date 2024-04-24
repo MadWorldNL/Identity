@@ -38,8 +38,9 @@ public class RefreshTokenUseCase
         {
             IsSuccess = true,
             Jwt = jwt.Token,
-            Expires = jwt.Expires,
-            RefreshToken = request.RefreshToken
+            JwtExpires = jwt.Expires,
+            RefreshToken = request.RefreshToken,
+            RefreshTokenExpires = refreshToken.Expires
         };
     }
 }

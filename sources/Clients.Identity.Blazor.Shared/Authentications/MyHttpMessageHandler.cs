@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Http.Headers;
+using MadWorldNL.Clients.Identity.Api.Contracts.Authentications;
 
 namespace MadWorldNL.Clients.Identity.Blazor.Shared.Authentications;
 
@@ -46,8 +47,18 @@ public class MyHttpMessageHandler : DelegatingHandler
         {
             throw new RefreshTokenInvalidException();
         }
+
+        if (accessToken.AccessTokenExpiration.AddMinutes(-5) < DateTimeOffset.UtcNow)
+        {
+            accessToken = await RefreshAccessToken(accessToken);
+        }
         
         AddBearerToken(request, accessToken.AccessToken);
+    }
+
+    private async Task<LoginProxyResponse> RefreshAccessToken(LoginProxyResponse accessToken)
+    {
+        return await _authenticationManager.RefreshAsync(accessToken.RefreshToken);
     }
     
     private static void AddBearerToken(HttpRequestMessage request, string token)

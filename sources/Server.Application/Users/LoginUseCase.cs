@@ -38,15 +38,17 @@ public class LoginUseCase
         var jwt = _jwtGenerator.GenerateToken(user!, request.Audience, roles);
         var token = GenerateRefreshToken();
 
-        var refreshToken = new RefreshToken(token, request.Audience, expires: DateTime.UtcNow.AddDays(7), user!.Id);
+        var refreshTokenExpires = DateTime.UtcNow.AddDays(7);
+        var refreshToken = new RefreshToken(token, request.Audience, refreshTokenExpires, user!.Id);
         await _userRepository.AddRefreshToken(refreshToken);
         
         return new TokenResponse()
         {
             IsSuccess = true,
             Jwt = jwt.Token,
-            Expires = jwt.Expires,
-            RefreshToken = token
+            JwtExpires = jwt.Expires,
+            RefreshToken = token,
+            RefreshTokenExpires = refreshTokenExpires
         };
     }
     

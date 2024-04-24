@@ -12,8 +12,9 @@ public static class TokenResponseMappers
         {
             AccessToken = response.Jwt,
             RefreshToken = response.RefreshToken,
-            Expiration = response.Expires.ToTimestamp(),
-            IsSuccess = response.IsSuccess
+            AccessTokenExpiration = response.JwtExpires.ToTimestamp(),
+            IsSuccess = response.IsSuccess,
+            RefreshTokenExpiration = response.RefreshTokenExpires.ToTimestamp()
         };
     }
 }

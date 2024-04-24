@@ -1,8 +1,10 @@
 using Google.Protobuf.WellKnownTypes;
 using MadWorldNL.Clients.Identity.Api.Contracts.Authentications;
 using MadWorldNL.Clients.Identity.Api.Shared.Settings;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.Extensions.Options;
 using Server.Presentation.Grpc.Authentication.V1;
+using LoginRequest = Server.Presentation.Grpc.Authentication.V1.LoginRequest;
 
 namespace MadWorldNL.Clients.Identity.Api.Shared.Services;
 
@@ -27,8 +29,9 @@ public sealed class AuthenticationService(
         {
             IsSuccess = response.IsSuccess,
             AccessToken = response.AccessToken,
-            Expiration = response.Expiration.ToDateTime(),
-            RefreshToken = response.RefreshToken
+            AccessTokenExpiration = response.AccessTokenExpiration.ToDateTime(),
+            RefreshToken = response.RefreshToken,
+            RefreshTokenExpiration = response.RefreshTokenExpiration.ToDateTime()
         };
     }
 
@@ -39,6 +42,26 @@ public sealed class AuthenticationService(
         return new LogoutProxyResponse()
         {
             IsSuccess = response.IsSuccess
+        };
+    }
+    
+    public async Task<LoginProxyResponse> RefreshTokenAsync(RefreshTokenProxyRequest proxyRequest)
+    {
+        var request = new TokenRefreshRequest()
+        {
+            Audience = _identitySettings.Audience,
+            RefreshToken = proxyRequest.AccessToken
+        };
+        
+        var response = await client.TokenRefreshAsync(request);
+
+        return new LoginProxyResponse()
+        {
+            IsSuccess = response.IsSuccess,
+            AccessToken = response.AccessToken,
+            AccessTokenExpiration = response.AccessTokenExpiration.ToDateTime(),
+            RefreshToken = response.RefreshToken,
+            RefreshTokenExpiration = response.RefreshTokenExpiration.ToDateTime()
         };
     }
 }

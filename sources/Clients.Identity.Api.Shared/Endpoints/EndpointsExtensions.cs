@@ -27,5 +27,10 @@ public static class EndpointsExtensions
                     authenticationService.LogoutAsync())
             .RequireAuthorization()
             .WithName("Logout");
+        
+        authenticationEndpoints.MapPost("/RefreshToken",
+                ([FromBody] RefreshTokenProxyRequest request, [FromServices] AuthenticationService authenticationService) =>
+                    authenticationService.RefreshTokenAsync(request))
+            .WithName("RefreshToken");
     }
 }

@@ -20,4 +20,11 @@ public class AuthenticationService : IAuthenticationService
         return await response.Content.ReadFromJsonAsync<LoginProxyResponse>() 
                ?? new LoginProxyResponse();
     }
+
+    public async Task<LoginProxyResponse> RefreshTokenAsync(RefreshTokenProxyRequest request)
+    {
+        var response = await _httpClient.PostAsJsonAsync($"{Endpoint}/RefreshToken", request);
+        return await response.Content.ReadFromJsonAsync<LoginProxyResponse>() 
+               ?? new LoginProxyResponse();
+    }
 }

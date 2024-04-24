@@ -4,8 +4,9 @@ public class TokenResponse
 {
     public bool IsSuccess { get; init; }
     public string Jwt { get; init; } = string.Empty;
-    public DateTimeOffset Expires  { get; init; }
+    public DateTimeOffset JwtExpires  { get; init; }
     public string RefreshToken { get; init; } = string.Empty;
+    public DateTimeOffset RefreshTokenExpires  { get; init; }
     
     public string Message { get; set; } = string.Empty;
 
@@ -14,7 +15,7 @@ public class TokenResponse
         return new TokenResponse()
         {
             Message = "Access denied",
-            Expires = DateTimeOffset.MinValue,
+            JwtExpires = DateTimeOffset.MinValue,
         };
     }
 }
